@@ -94,8 +94,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 var routes = [{ path: '/dashboard', component: __webpack_require__(59) }, { path: '/profile', component: __webpack_require__(62) }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-  mode: 'history',
-  routes: routes // short for `routes: routes`
+    mode: 'history',
+    routes: routes // short for `routes: routes`
 });
 
 /**
@@ -107,9 +107,20 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
 Vue.component('example-component', __webpack_require__(65));
 
 var app = new Vue({
-  el: '#app',
-  router: router
+    el: '#app',
+    router: router,
+    data: {
+        search: ''
+    },
+    methods: {
+        searchit: _.debounce(function () {
+            Fire.$emit('searching');
+        }, 1000),
 
+        printme: function printme() {
+            window.print();
+        }
+    }
 });
 
 /***/ }),
